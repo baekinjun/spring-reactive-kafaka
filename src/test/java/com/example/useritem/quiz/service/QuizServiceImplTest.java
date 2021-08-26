@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
 
 import static org.mockito.BDDMockito.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,10 +33,10 @@ class QuizServiceImplTest {
         //목객체에 데이터 주입
         given(generatorService.randomFactor()).willReturn(50, 30);
 
-        Quiz quiz = quizService.createQuiz();
-
-        assertThat(quiz.getFactorA(), is(50));
-        assertThat(quiz.getFactorB(), is(30));
-        assertThat(quiz.getResult(), is(1500));
+        Mono<Quiz> quiz = quizService.createQuiz();
+        Quiz q = quiz.block();
+        assertThat(q.getFactorA(), is(50));
+        assertThat(q.getFactorB(), is(30));
+        assertThat(q.getResult(), is(1500));
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Document(collation = "attempts")
+@Document(collection = "attempts")
 @Getter
 @RequiredArgsConstructor
 @ToString

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 //카프카는 jpa 사용안한다 리액터사용
-@Document(collation = "users")
+@Document(collection = "users")
 @Getter
 @ToString
 @RequiredArgsConstructor
